@@ -33,7 +33,7 @@ class WKBWriterTest extends GEOSTest
         try {
             $writer->setOutputDimension(1);
             $this->assertTrue(FALSE);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->assertContains('must be 2 or 3', $e->getMessage());
         }
 
@@ -41,7 +41,7 @@ class WKBWriterTest extends GEOSTest
         try {
             $writer->setOutputDimension(4);
             $this->assertTrue(FALSE);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->assertContains('must be 2 or 3', $e->getMessage());
         }
     }
@@ -62,7 +62,7 @@ class WKBWriterTest extends GEOSTest
         try {
             $writer->setByteOrder(5);
             $this->assertTrue(FALSE);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->assertContains('LITTLE (1) or BIG (0)', $e->getMessage());
         }
     }
@@ -138,8 +138,8 @@ class WKBWriterTest extends GEOSTest
         try {
             $writer->write(1);
             $this->assertTrue(false);
-        } catch (ErrorException $e) {
-            $this->assertContains('expects parameter 1 to be object, integer given', $e->getMessage());
+        } catch (Throwable $e) {
+            $this->assertContains('must be of type object, int given', $e->getMessage());
         }
     }
 
@@ -150,8 +150,8 @@ class WKBWriterTest extends GEOSTest
         try {
             $writer->writeHEX(1);
             $this->assertTrue(false);
-        } catch (ErrorException $e) {
-            $this->assertContains('expects parameter 1 to be object, integer given', $e->getMessage());
+        } catch (Throwable $e) {
+            $this->assertContains('must be of type object, int given', $e->getMessage());
         }
     }
 }

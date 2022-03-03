@@ -23,8 +23,8 @@ class WKTWriterTest extends GEOSTest
         try {
             $writer->write(1);
             $this->assertTrue(FALSE); # this is just to fail if we get here
-        } catch (Exception $e) {
-            $this->assertContains('expects parameter 1', $e->getMessage());
+        } catch (Throwable $e) {			
+            $this->assertContains('Argument #1', $e->getMessage());
         }
 
         $g = $reader->read('POINT(6 7)');
@@ -148,7 +148,7 @@ class WKTWriterTest extends GEOSTest
         try {
             $writer->setOutputDimension(1);
             $this->assertTrue(FALSE);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->assertContains('must be 2 or 3', $e->getMessage());
         }
 
@@ -156,7 +156,7 @@ class WKTWriterTest extends GEOSTest
         try {
             $writer->setOutputDimension(4);
             $this->assertTrue(FALSE);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->assertContains('must be 2 or 3', $e->getMessage());
         }
 

@@ -35,6 +35,14 @@
 
 #include "php.h"
 
+#ifndef TSRMLS_D
+#define TSRMLS_D void
+#define TSRMLS_DC
+#define TSRMLS_C
+#define TSRMLS_CC
+#define TSRMLS_FETCH()
+#endif
+
 #ifdef ZTS
 #include "TSRM.h"
 #endif

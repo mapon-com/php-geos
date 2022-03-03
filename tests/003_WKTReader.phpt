@@ -83,7 +83,7 @@ class WKTReaderTest extends GEOSTest
         try {
             $reader->read("MULTIDOT(0 1 2 3)");
             $this->assertTrue(FALSE); # this is just to fail if we get here
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $this->assertContains('ParseException', $e->getMessage());
         }
     }
@@ -96,8 +96,8 @@ class WKTReaderTest extends GEOSTest
         try {
             $reader->read();
             $this->assertTrue(FALSE); # this is just to fail if we get here
-        } catch (Exception $e) {
-            $this->assertContains('expects exactly 1 parameter',
+        } catch (Throwable $e) {
+            $this->assertContains('expects exactly 1',
                                   $e->getMessage());
         }
     }
